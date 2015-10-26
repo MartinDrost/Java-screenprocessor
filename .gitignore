@@ -74,3 +74,9 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+/FFMpeg - kopie/build/
+/FFMpeg - kopie/dist/
+/FFMpeg - kopie/nbproject/private/
+/Robots/build/
+/Robots/dist/
+/Robots/nbproject/private/
