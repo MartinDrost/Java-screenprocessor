@@ -44,7 +44,7 @@ public class AmbilightProcessor {
         
         this.screenCapture =  new ScreenCapture();
         
-        this.test();
+        //this.test();
         this.update();
     }
     
@@ -121,10 +121,8 @@ public class AmbilightProcessor {
             colors.add(rgbToHexadecimal(this.averageColors[i][this.averageColors[i].length-1]));
         
         colors.toArray();
-        System.out.println("Created array");
         try {
             Process p = Runtime.getRuntime().exec("sudo ./test " + String.join(" ", colors));
-            System.out.println("Ran command");
         } catch (IOException ex) {
             System.out.println("Couldnt run command");
         }
