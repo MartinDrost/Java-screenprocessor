@@ -131,6 +131,36 @@ public class AmbilightProcessor {
         } catch (IOException ex) {
             System.out.println("Couldnt run command");
         }
+        
+        try {
+            Process p = Runtime.getRuntime().exec("./test " + String.join(" ", colors));
+            p.destroy();
+            
+            Runtime.getRuntime().gc();
+            System.out.println("Ran command2");
+        } catch (IOException ex) {
+            System.out.println("Couldnt run command");
+        }
+        
+        try {
+            Process p = Runtime.getRuntime().exec("test");
+            p.destroy();
+            
+            Runtime.getRuntime().gc();
+            System.out.println("Ran command3");
+        } catch (IOException ex) {
+            System.out.println("Couldnt run command");
+        }
+        
+        try {
+            Process p = Runtime.getRuntime().exec("test " + String.join(" ", colors));
+            p.destroy();
+            
+            Runtime.getRuntime().gc();
+            System.out.println("Ran command4");
+        } catch (IOException ex) {
+            System.out.println("Couldnt run command");
+        }
     }
     
     private String rgbToHexadecimal(Color color)
