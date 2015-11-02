@@ -11,7 +11,12 @@ import java.awt.image.BufferedImage;
 
 //Test module
 import java.awt.Graphics;
+import java.io.IOException;
+import java.util.List;
 import static java.lang.Thread.sleep;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
 
 /**
@@ -102,6 +107,35 @@ public class AmbilightProcessor {
         }
     }
     
+    private void lightColors()
+    {
+        List<String> colors = new ArrayList<>();
+        
+        for(int i = this.averageColors.length-1; i >= 0; i--)
+            colors.add(rgbToHexadecimal(this.averageColors[i][0]));
+        
+        for(int i = 0; i < this.averageColors[0].length; i++)
+            colors.add(rgbToHexadecimal(this.averageColors[0][i]));
+        
+        for(int i = this.averageColors.length-1; i >= 0; i--)
+            colors.add(rgbToHexadecimal(this.averageColors[i][this.averageColors[i].length-1]));
+        
+        colors.toArray();
+        try {
+            Process p = Runtime.getRuntime().exec("sudo ./test " + String.join(" ", colors));
+            p.destroy();
+            
+            Runtime.getRuntime().gc();
+        } catch (IOException ex) {
+            Logger.getLogger(AmbilightProcessor.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    private String rgbToHexadecimal(Color color)
+    {
+        return String.format("0x%02x%02x%02x", color.getRed(), color.getGreen(), color.getBlue());
+    }
+    
     /**
      * 
      */
@@ -112,6 +146,7 @@ public class AmbilightProcessor {
             lastUpdated = System.currentTimeMillis();
 
             calculateAverageColors(screenCapture.grabScreen());
+            lightColors();
             paintTestFrame(testFrame.getGraphics());
 
             long time = System.currentTimeMillis()-lastUpdated;
