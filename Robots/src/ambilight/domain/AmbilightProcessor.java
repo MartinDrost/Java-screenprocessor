@@ -124,9 +124,6 @@ public class AmbilightProcessor {
         System.out.println("Created array");
         try {
             Process p = Runtime.getRuntime().exec("sudo ./test " + String.join(" ", colors));
-            p.destroy();
-            
-            Runtime.getRuntime().gc();
             System.out.println("Ran command");
         } catch (IOException ex) {
             System.out.println("Couldnt run command");
@@ -134,9 +131,6 @@ public class AmbilightProcessor {
         
         try {
             Process p = Runtime.getRuntime().exec("./test " + String.join(" ", colors));
-            p.destroy();
-            
-            Runtime.getRuntime().gc();
             System.out.println("Ran command2");
         } catch (IOException ex) {
             System.out.println("Couldnt run command");
@@ -144,9 +138,6 @@ public class AmbilightProcessor {
         
         try {
             Process p = Runtime.getRuntime().exec("test");
-            p.destroy();
-            
-            Runtime.getRuntime().gc();
             System.out.println("Ran command3");
         } catch (IOException ex) {
             System.out.println("Couldnt run command");
@@ -154,9 +145,6 @@ public class AmbilightProcessor {
         
         try {
             Process p = Runtime.getRuntime().exec("test " + String.join(" ", colors));
-            p.destroy();
-            
-            Runtime.getRuntime().gc();
             System.out.println("Ran command4");
         } catch (IOException ex) {
             System.out.println("Couldnt run command");
