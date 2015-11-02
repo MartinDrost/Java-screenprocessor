@@ -121,13 +121,15 @@ public class AmbilightProcessor {
             colors.add(rgbToHexadecimal(this.averageColors[i][this.averageColors[i].length-1]));
         
         colors.toArray();
+        System.out.println("Created array");
         try {
             Process p = Runtime.getRuntime().exec("sudo ./test " + String.join(" ", colors));
             p.destroy();
             
             Runtime.getRuntime().gc();
+            System.out.println("Ran command");
         } catch (IOException ex) {
-            Logger.getLogger(AmbilightProcessor.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("Couldnt run command");
         }
     }
     
@@ -147,7 +149,7 @@ public class AmbilightProcessor {
 
             calculateAverageColors(screenCapture.grabScreen());
             lightColors();
-            paintTestFrame(testFrame.getGraphics());
+            //paintTestFrame(testFrame.getGraphics());
 
             long time = System.currentTimeMillis()-lastUpdated;
             if(time < interval)
