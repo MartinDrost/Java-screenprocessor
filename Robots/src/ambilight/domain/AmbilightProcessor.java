@@ -107,7 +107,7 @@ public class AmbilightProcessor {
         }
     }
     
-    private void lightColors()
+    private void lightColors() throws InterruptedException
     {
         List<String> colors = new ArrayList<>();
         
@@ -117,12 +117,13 @@ public class AmbilightProcessor {
         for(int i = 0; i < this.averageColors[0].length; i++)
             colors.add(rgbToHexadecimal(this.averageColors[0][i]));
         
-        for(int i = this.averageColors.length-1; i >= 0; i--)
+        for(int i = 0; i < this.averageColors.length; i++)
             colors.add(rgbToHexadecimal(this.averageColors[i][this.averageColors[i].length-1]));
         
         colors.toArray();
         try {
             Process p = Runtime.getRuntime().exec("sudo ./test " + String.join(" ", colors));
+            p.waitFor();
         } catch (IOException ex) {
             System.out.println("Couldnt run command");
         }

@@ -18,7 +18,7 @@ public class Ambilight {
     public static void main(String[] args) {
         System.out.println("Init");
         
-        AmbilightProcessor processor = new AmbilightProcessor(1000/30, new int[]{26, 26});
+        AmbilightProcessor processor = new AmbilightProcessor(1500, new int[]{40, 40});
         
         //Keep thread alive
         while(true)
