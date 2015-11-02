@@ -22,7 +22,7 @@ public class ScreenCapture {
     //frameGrabber
     FFmpegFrameGrabber frameGrabber;
     BufferedImage bufferedImage;
-    Java2DFrameConverter frameConverter;
+    org.bytedeco.javacv.Java2DFrameConverter frameConverter;
     //Variable to store the screen dimensions
     private Dimension screenSize;
     
