@@ -122,7 +122,7 @@ public class AmbilightProcessor {
         
         colors.toArray();
         try {
-            Process p = Runtime.getRuntime().exec("sudo ./test " + String.join(" ", colors));
+            Process p = Runtime.getRuntime().exec("sudo ./lightLeds " + String.join(" ", colors));
             p.waitFor();
         } catch (IOException ex) {
             System.out.println("Couldnt run command");
